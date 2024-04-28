@@ -1,2 +1,12 @@
-my_env/Lib/
+*.log
+*.pyc
+__pycache__
 db.sqlite3
+media
+
+# Environments
+*pyc
+.my_env
+my_env/
+Lib/
+Scripts/
