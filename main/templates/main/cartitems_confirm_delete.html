@@ -1,0 +1,16 @@
+{% extends "main/layout.html" %}
+{% block content %}
+    <div class="content-section container">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group text-light font-weight-bold" style="font-family: tahome;">
+                <legend class="border-bottom mb-4">Delete Cart Item</legend>
+                <h3 style="font-family: tahome;">Are you sure you want to delete the post "{{ object.item.title }}"</h3>
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-danger" type="submit">Yes, Delete</button>
+                <a class="btn btn-success" href="{% url 'main:cart' %}">Cancel</a>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

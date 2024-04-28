@@ -1,0 +1,61 @@
+{% extends "main/layout.html" %}
+{% block content %}
+<div class="cart">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-9 mt-5">
+                <h3 class="text-center text-light font-weight-bold">Personal Cart</h3>
+                {% if cart_items %}
+                <div class="table-responsive">
+                    <table class="table table-light bg-dark text-light font-weight-bold">
+                        <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Total Plates</th>
+                            <th scope="col"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for cart in cart_items %}
+                        <tr>
+                            <td>{{ cart.item.title }}</td>
+                            <td>₹ {{ cart.item.price }}</td>
+                            <td>{{ cart.item.plates }} plates</td>
+                            <td><a class="btn btn-danger font-weight-bold" href="{% url 'main:remove-from-cart' cart.id %}">Delete</a></td>
+                        </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="table-responsive">
+                    <table class="table table-light font-weight-bold bg-dark text-light">
+                        <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Total Plates</th>
+                            <th scope="col"></th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-sm-3 mt-5 mb-3">
+                <div class="content-section">
+                    <h3 class="text-center text-light font-weight-bold">Order Summary</h3>
+                      <ul class="list-group font-weight-bold">
+                        <li class="list-group-item list-group-item-light text-center text-light bg-dark">Total: ₹ {{ total }}</li>
+                        <li class="list-group-item list-group-item-light text-center text-light bg-dark">Number of Orders: {{ count }}</li>
+                        <li class="list-group-item list-group-item-light text-center text-light bg-dark">Total Plates: {{ total_plates }}</li>
+                        <li class="list-group-item list-group-item-light text-center text-light bg-dark"><a class="btn btn-primary font-weight-bold" href="{% url 'main:ordered' %}">Proceed To Order</a></li>
+                        <li class="list-group-item list-group-item-light text-center bg-dark"><a class="btn btn-success font-weight-bold" href="/">Continue Buying</a></li>
+                      </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
