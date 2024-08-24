@@ -1,0 +1,102 @@
+{% extends "main/layout.html" %}
+{% block content %}
+<div class="cart">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 mt-5">
+                <h3 class="text-center text-light font-weight-bold">Active Orders</h3>
+                {% if items %}
+                <h4 class="text-center text-light">Total Bill Amount:₹ {{total}} for {{ count }} Orders.</h4>
+                <div class="table-responsive">
+                    <table class="table table-light bg-dark text-light font-weight-bold">
+                        <thead>
+                        <tr>
+                            <th scope="col">Ordered</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Total Plates</th>
+                            <th scope="col">Order Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for item_active in items %}
+                        <tr>
+                            <td>{{ item_active.ordered_date }}</td>
+                            <td>{{ item_active.item.title }}</td>
+                            <td>₹ {{ item_active.item.price }}</td>
+                            <td>{{ item_active.item.plates }} plates</td>
+                            <td>{{ item_active.status }}</td>
+                        </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="table-responsive">
+                    <table class="table table-light font-weight-bold bg-dark text-light">
+                        <thead>
+                        <tr>
+                            <th scope="col">Ordered</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Total Plates</th>
+                            <th scope="col">Order Status</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 mt-5">
+                <h3 class="text-center text-light font-weight-bold">Past Orders</h3>
+                {% if cart_items %}
+                <div class="table-responsive">
+                    <table class="table table-light bg-dark text-light font-weight-bold">
+                        <thead>
+                        <tr>
+                            <th scope="col">Ordered</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Total Plates</th>
+                            <th scope="col">Order Status</th>
+                            <th scope="col">Delivery Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for cart in cart_items %}
+                        <tr>
+                            <td>{{ cart.ordered_date }}</td>
+                            <td>{{ cart.item.title }}</td>
+                            <td>₹ {{ cart.item.price }}</td>
+                            <td>{{ cart.item.plates }} plates</td>
+                            <td>{{ cart.status }}</td>
+                            <td>{{ cart.delivery_date }}</td>
+                        </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="table-responsive">
+                    <table class="table table-light bg-dark text-light">
+                        <thead>
+                        <tr>
+                            <th scope="col">Ordered</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Total Plates</th>
+                            <th scope="col">Order Status</th>
+                            <th scope="col">Delivery Date</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
