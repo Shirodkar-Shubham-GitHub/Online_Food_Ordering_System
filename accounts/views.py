@@ -29,8 +29,6 @@ def login_attempt(request):
         if user is None:
             messages.success(request, 'Wrong password.')
             return redirect('/accounts/login')
-        
-        request.session.flush()
 
         login(request , user)
         return redirect('/')
