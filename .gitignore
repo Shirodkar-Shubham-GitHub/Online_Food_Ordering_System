@@ -1,4 +1,7 @@
 # .gitignore
 
+# Ignore the sql_pass.py file
+sql_pass.py
+
 # Ignore the my_env file
 my_env
