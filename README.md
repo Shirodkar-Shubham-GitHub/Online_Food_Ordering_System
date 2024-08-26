@@ -1,7 +1,7 @@
 # Lett' uce Eat - Online Food Ordering System
 
 ## Overview
-    Welcome to Lett' uce Eat, an online food ordering system where users can browse delicious food items, add them to their cart, and place orders with ease. This project includes features for both users and administrators, with a focus on secure authentication and smooth order management.
+   Welcome to Lett' uce Eat, an online food ordering system where users can browse delicious food items, add them to their cart, and place orders with ease. This project includes features for both users and administrators, with a focus on secure authentication and smooth order management.
     
 ## Features
 ## User Features
@@ -34,7 +34,7 @@
     python manage.py runserver
     
 ## Deployment
-    This project is ready to be deployed on PythonAnywhere or any other hosting platform. Follow the platform's instructions to deploy your Django application.
+   This project is ready to be deployed on PythonAnywhere or any other hosting platform. Follow the platform's instructions to deploy your Django application.
 ## Usage
 #### 1. Registration and Login:
    * Register a new account with email verification.
@@ -46,6 +46,6 @@
    * Login to the admin panel to manage users, orders, and food items.
 
 ## Contributing
-    We welcome contributions! Please fork the repository and submit a pull request with your improvements.
+   We welcome contributions! Please fork the repository and submit a pull request with your improvements.
 ## License
-    This project is licensed under the MIT License - see the LICENSE file for details.
+   This project is licensed under the MIT License - see the LICENSE file for details.
