@@ -54,7 +54,7 @@
    * Login to the admin panel to manage users, orders, and food items.
 
 ## Testing
-   python manage.py test
+    python manage.py test
 
 ## Contributing
    We welcome contributions! Please fork the repository and submit a pull request with your improvements.
