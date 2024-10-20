@@ -3,7 +3,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import *
-import uuid, sql_pass
+import uuid, config_file
 from django.conf import settings
 from django.core.mail import send_mail
 from django.contrib.auth import authenticate,login
@@ -101,7 +101,7 @@ def error_page(request):
 
 def send_mail_after_registration(email , token):
     subject = 'Your account needs to be verified'
-    message = f'{sql_pass.host_verify}/{token}'
+    message = f'{config_file.host_verify}/{token}'
     email_from = settings.EMAIL_HOST_USER
     recipient_list = [email]
     send_mail(subject, message , email_from ,recipient_list )
@@ -139,7 +139,7 @@ def forgot(request):
 
 def send_mail_for_forgot_password(email):
     subject = 'Change Your Account Password'
-    message = f'{sql_pass.host_forgot}/forgot/'
+    message = f'{config_file.host_forgot}/forgot/'
     email_from = settings.EMAIL_HOST_USER
     recipient_list = [email]
     send_mail(subject, message, email_from, recipient_list)

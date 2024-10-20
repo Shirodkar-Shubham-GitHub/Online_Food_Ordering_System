@@ -5,3 +5,12 @@ sql_pass.py
 
 # Ignore the my_env file
 my_env
+
+# Django
+__pycache__/
+accounts/__pycache__/
+main/__pycache__/
+db.sqlite3
+media/
+*.py[cod]
+*.my_env
