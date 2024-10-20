@@ -1,6 +1,6 @@
 # .gitignore
 
-# Ignore the sql_pass.py file
+# Ignore the config_file.py file
 config_file.py
 
 # Ignore the my_env file
@@ -17,8 +17,4 @@ __pycache__/
 # Ignore media files
 /media/
 =======
-# Django
-db.sqlite3
-media/
-*.my_env
 >>>>>>> cfb86fde477d59d7e8cee45381e10a553b36082f
