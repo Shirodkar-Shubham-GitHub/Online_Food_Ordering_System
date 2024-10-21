@@ -66,6 +66,7 @@ projectname/
 │   ├── tests.py              # Unit tests for the app
 │   ├── urls.py               # App-specific URL routing
 │   ├── views.py              # Business logic and view functions
+|
 ├── accounts/                  # Django app folder 
 │   ├── migrations/           # Migrations folder (auto-generated)
 |   ├── templates/
