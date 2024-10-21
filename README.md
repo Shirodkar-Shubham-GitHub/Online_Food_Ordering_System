@@ -39,7 +39,57 @@
     python manage.py createsuperuser
  #### 6. Run the Development Server:
     python manage.py runserver
-    
+
+## Project Structure
+
+The following is the structure of the Django project:
+
+```bash
+projectname/
+│
+├── Foods_Ordering/              # Main Django project folder
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py           # Project settings (e.g., database, middleware)
+│   ├── urls.py               # Main URL routing for the project
+│   ├── wsgi.py
+│
+├── main/                  # Django app folder
+│   ├── migrations/           # Migrations folder (auto-generated)
+|   ├── static/
+|   ├── templates/
+|   ├── templatetags/
+│   ├── __init__.py
+│   ├── admin.py              # Django admin interface settings
+│   ├── apps.py
+│   ├── models.py             # Database models
+│   ├── tests.py              # Unit tests for the app
+│   ├── urls.py               # App-specific URL routing
+│   ├── views.py              # Business logic and view functions
+├── accounts/                  # Django app folder 
+│   ├── migrations/           # Migrations folder (auto-generated)
+|   ├── templates/
+│   ├── __init__.py
+│   ├── admin.py              # Django admin interface settings
+│   ├── apps.py
+│   ├── models.py             # Database models
+│   ├── tests.py              # Unit tests for the app
+│   ├── urls.py               # App-specific URL routing
+│   ├── views.py              # Business logic and view functions
+│
+├── media/                   # The files uploaded by users on the system.
+│
+├── my_env/                  # A directory with particular  file structure.
+│
+├── config_file.py           # A file that contains private links and credentials.
+│
+├── manage.py                 # Django command-line utility
+│
+├── requirements.txt          # Python dependencies for the project
+│
+└── README.md                 # Project documentation (this file)
+
+
 ## Deployment
    This project is ready to be deployed on PythonAnywhere or any other hosting platform. Follow the platform's instructions to deploy your Django application.
    
@@ -55,6 +105,7 @@
 
 ## Testing
     python manage.py test
+
 ## Future Improvements
 
 ### 1. **Payment Gateway Integration for Order Payments**
