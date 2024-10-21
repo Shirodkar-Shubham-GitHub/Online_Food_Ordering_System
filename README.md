@@ -45,7 +45,7 @@
 The following is the structure of the Django project:
 
 ```bash
-projectname/
+Online_Food_Ordering_System/
 │
 ├── Foods_Ordering/              # Main Django project folder
 │   ├── __init__.py
