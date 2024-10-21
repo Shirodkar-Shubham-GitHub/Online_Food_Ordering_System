@@ -88,7 +88,7 @@ projectname/
 ├── requirements.txt          # Python dependencies for the project
 │
 └── README.md                 # Project documentation (this file)
-
+```
 
 ## Deployment
    This project is ready to be deployed on PythonAnywhere or any other hosting platform. Follow the platform's instructions to deploy your Django application.
