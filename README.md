@@ -55,8 +55,24 @@
 
 ## Testing
     python manage.py test
+## Future Improvements
 
-## Contributing
-   We welcome contributions! Please fork the repository and submit a pull request with your improvements.
-## License
-   This project is licensed under the MIT License - see the LICENSE file for details.
+### 1. **Payment Gateway Integration for Order Payments**
+
+We plan to implement a secure and reliable payment gateway to enable users to complete their orders directly on the platform. This enhancement will streamline the checkout process and improve user experience.
+
+#### Planned Features:
+- **Multiple Payment Methods**: Integration of popular payment options such as credit/debit cards, UPI, net banking, and mobile wallets.
+- **Payment Gateways**: Implementation of widely used payment gateways like PayPal, Razorpay, or Paytm.
+- **Secure Transactions**: Ensure that all transactions are encrypted and meet the required security standards, such as PCI-DSS compliance.
+- **Order Confirmation and Receipts**: Automatically generate order receipts and send email confirmations after successful payments.
+- **Test Environment**: A sandbox environment for testing the payment process before deployment to production.
+
+#### Future Development Phases:
+1. **Research and Select Payment Gateway**: Evaluate and choose the payment gateway based on transaction fees, country-specific availability, and ease of integration.
+2. **Backend Integration**: Use the payment gateway's API to securely process payments in the backend.
+3. **Frontend Checkout Page**: Design a user-friendly checkout page that allows users to select their preferred payment method.
+4. **Testing and Debugging**: Test the entire payment process in a sandbox environment before going live.
+5. **Deployment**: Once the payment gateway integration is completed and tested, it will be deployed to the production environment.
+
+Expect to implement the payment gateway within the next few releases.
