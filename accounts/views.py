@@ -3,11 +3,16 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import *
-import uuid, config_file
+import uuid
 from django.conf import settings
 from django.core.mail import send_mail
 from django.contrib.auth import authenticate,login
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 def login_attempt(request):
     if request.method == 'POST':
@@ -41,7 +46,6 @@ def register_attempt(request):
         username = request.POST.get('username')
         email = request.POST.get('email')
         password = request.POST.get('password')
-        print(password)
 
         try:
             if User.objects.filter(username = username).first():
@@ -67,12 +71,33 @@ def register_attempt(request):
 
     return render(request , 'register.html')
 
-def success(request):
-    return render(request , 'success.html')
-
 
 def token_send(request):
     return render(request , 'token_send.html')
+
+@login_required
+def profile(request):
+    return render(request, 'profile.html')
+
+@login_required
+def edit_profile(request):
+    if request.method == "POST":
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        
+        user = request.user
+        user.first_name = first_name
+        user.last_name = last_name
+        user.username = username
+        user.email = email
+        user.save()
+        
+        messages.success(request, "Your profile has been updated successfully.")
+        return redirect('accounts:profile')
+    
+    return render(request, "edit_profile.html")
 
 
 
@@ -101,7 +126,7 @@ def error_page(request):
 
 def send_mail_after_registration(email , token):
     subject = 'Your account needs to be verified'
-    message = f'{config_file.host_verify}/{token}'
+    message = f'{os.getenv("host_verify")}/{token}'
     email_from = settings.EMAIL_HOST_USER
     recipient_list = [email]
     send_mail(subject, message , email_from ,recipient_list )
@@ -139,7 +164,7 @@ def forgot(request):
 
 def send_mail_for_forgot_password(email):
     subject = 'Change Your Account Password'
-    message = f'{config_file.host_forgot}/forgot/'
+    message = f'{os.getenv("host_forgot")}/forgot/'
     email_from = settings.EMAIL_HOST_USER
     recipient_list = [email]
     send_mail(subject, message, email_from, recipient_list)
@@ -149,4 +174,4 @@ def logout_request(request):
 
     logout(request)
     messages.success(request, "You have successfully logged out.")
-    return redirect('login_attempt')
+    return redirect('accounts:login_attempt')

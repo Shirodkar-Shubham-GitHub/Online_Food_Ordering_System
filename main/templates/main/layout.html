@@ -11,14 +11,16 @@
     <link rel="shortcut icon" href="{% static 'main/img/favicon.png' %}">
     <title>Lett' uce Eat</title>
 </head>
-<body class="bg-dark">
-    <nav class="navbar navbar-expand-lg bg-dark">
-        <div class="navbar-header pb-4">
+<body class="">
+    {% block content1 %}
+    {% endblock %}
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="navbar-header pb-2 navbar-nav mr-auto">
             <a class="navbar-brand" href="#">
-                <img src="https://img.icons8.com/cotton/40/000000/beefburger.png" class="logo" />
+                <img src="https://img.icons8.com/?size=100&id=MSeo0pcLeg0A&format=png&color=000000" style="height: 40px;" class="logo" />
             </a>
         </div>
-        <a class="navbar-brand" href="/"><h3 class="class-name text-warning font-weight-bold">Lett' uce Eat</h3></a>
+        <a class="navbar-brand" href="/"><h3 class="class-name text-light font-weight-bold">Lett' uce Eat</h3></a>
         <button
             class="navbar-toggler"
             type="button"
@@ -31,39 +33,47 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
-            </ul>
             <ul class="navbar-nav ml-auto">
-                    <li><a href="{% url 'main:home' %}" class="mr-2 text-white">Home</a></li>
+                {% block content3 %}
+                
+                {% endblock %}
+                <li class="nav-item">
+                    <a href="{% url 'main:home' %}" class="nav-link mr-2 font-weight-bold text-light">Home</a>
+                </li>
                 {% if user.is_authenticated %}
-                    
-                        <li><a href="{% url 'main:cart' %}" class="mr-2 text-white">My Cart🛒</a></li>
-                        <li><a href="{% url 'main:order_details' %}" class="mr-2 text-white">Your Orders</a></li>
-                        <li><a href="{% url 'main:about' %}" class="mr-2 text-white">About</a></li>
-
-                        <li>
-                            <form class="logout-link" action="{% url 'logout' %}" method="post">
-                                {% csrf_token %}
-                                <button type="submit" class="mr-2 rounded bg-danger text-light font-weight-bold">Logout</button>
-                            </form>
-                        </li>
-                    
-                {% else %}
-                    <li><a href="{% url 'main:about' %}" class="mr-2 text-white">About</a></li>
-                    <li>
-                        <form class="" action="{% url 'login_attempt' %}">
-                            <button type="submit" class="mr-2 rounded bg-success text-light font-weight-bold">Login</button>
-                        </form>
+                    <li class="nav-item">
+                        <a href="{% url 'main:menu' %}" class="nav-link mr-2 font-weight-bold text-white">Menu</a>
                     </li>
-                    <li>
-                        <form class="" action="{% url 'register_attempt' %}">
-                            <button type="submit" class="mr-2 rounded bg-primary text-light font-weight-bold">Signup</button>
-                        </form>
+                    <li class="nav-item">
+                        <a href="{% url 'main:about' %}" class="nav-link mr-2 font-weight-bold text-white">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle font-weight-bold text-white" href="#" id="meDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Me
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right custom-dropdown bg-transparent" aria-labelledby="meDropdown">
+                            <a class="dropdown-item font-weight-bold text-light" href="{% url 'main:dashboard' %}">Dashboard</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item font-weight-bold text-danger" href="{% url 'accounts:logout' %}">Logout</a>
+                        </div>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a href="{% url 'main:menu' %}" class="nav-link mr-2 font-weight-bold text-white">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'main:about' %}" class="nav-link mr-2 font-weight-bold text-white">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'accounts:login_attempt' %}" class="nav-link mr-2 font-weight-bold text-light">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'accounts:register_attempt' %}" class="nav-link mr-2 font-weight-bold text-light">Signup</a>
                     </li>
                 {% endif %}
             </ul>
         </div>
-    </nav>
+    </nav>    
     <main role="main">
         {% if messages %}
           {% for message in messages %}
@@ -72,7 +82,7 @@
             </div>
           {% endfor %}
         {% endif %}
-        {% block content %}{% endblock %}
+        {% block content2 %}{% endblock %}
     </main>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

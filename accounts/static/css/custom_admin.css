@@ -1,0 +1,11 @@
+body {
+    background-color: #eef5ff !important;
+}
+.module caption {
+    font-size: 18px;
+    color: #333;
+}
+#header {
+    background-color: #4caf50;
+    color: #fff;
+}

@@ -1,10 +1,6 @@
-# .gitignore
-
-# Ignore the config_file.py file
-config_file.py
-
 # Ignore the my_env file
 my_env
+.env
 
 <<<<<<< HEAD
 # Ignore Python files

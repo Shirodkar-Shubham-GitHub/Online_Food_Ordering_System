@@ -1,0 +1,59 @@
+{% extends "main/layout.html" %}
+
+{% load static %}
+
+{% block content1 %}
+<div class="bg-box bg-dark">
+    <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="No Image">
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Force body and HTML to fit within the viewport */
+body, html {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* Ensure images or elements don’t exceed the viewport width */
+img, .container, .row, .col-12 {
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+</style>
+{% endblock %}
+
+
+{% block content2 %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <!-- Profile Card Section -->
+        <div class="col-12 col-md-8 col-lg-6 bg-dark p-4 rounded shadow border overflow-hidden">
+            <div class="profile-header text-center">
+                <h3 class="mt-3 text-light font-weight-bold">{{ user.first_name }} {{ user.last_name }}</h3>
+                <p class="text-light">@{{ user.username }}</p>
+            </div>
+            <!-- User Details -->
+            <div class="profile-details mt-4">
+                <ul class="list-group text-light">
+                    <li class="list-group-item border border-light bg-dark">
+                        <strong>Full Name:</strong> {{ user.first_name }} {{ user.last_name }}
+                    </li>
+                    <li class="list-group-item border border-light bg-dark">
+                        <strong>Username:</strong> {{ user.username }}
+                    </li>
+                    <li class="list-group-item border border-light bg-dark">
+                        <strong>Email:</strong> {{ user.email }}
+                    </li>
+                </ul>
+            </div>
+            <!-- Edit Profile Button -->
+            <div class="text-center mt-4">
+                <a href="{% url 'accounts:edit_profile' %}" class="btn btn-primary font-weight-bold">Edit Profile</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "main/layout.html" %}
+
+{% load static %}
+
+{% block content1 %}
+<div class="bg-box bg-dark">
+    <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="No Image">
+</div>
+{% endblock %}
+
+{% block content2 %}
+<div class="container py-5">
+    <h2 class="text-center mb-5 text-light font-weight-bold">Dashboard</h2>
+    <div class="row justify-content-center">
+
+        <!-- Profile Button -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <a href="{% url 'accounts:profile' %}" class="btn btn-lg btn-dark w-100 p-4 d-flex flex-column align-items-center justify-content-center border border-light shadow">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-person mb-3" viewBox="0 0 16 16">
+                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5.216 7A7.002 7.002 0 0 1 8 15a7.002 7.002 0 0 1 5.216-2H13a2 2 0 0 0 2-2v-1a5 5 0 0 0-5-5H6a5 5 0 0 0-5 5v1a2 2 0 0 0 2 2h.784z"/>
+                </svg>
+                <span class="font-weight-bold text-light">Profile</span>
+            </a>
+        </div>
+
+        <!-- My Cart Button -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <a href="{% url 'main:cart' %}" class="btn btn-lg btn-dark w-100 p-4 d-flex flex-column align-items-center justify-content-center border border-light shadow">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-cart mb-3" viewBox="0 0 16 16">
+                    <path d="M0 1a1 1 0 0 1 1-1h1.5a1 1 0 0 1 .95.68L3.89 3H14a1 1 0 0 1 .97 1.243l-1.5 6A1 1 0 0 1 12.5 11H4a1 1 0 0 1-.97-.757L1.61 3.607l-.272-1.09A1 1 0 0 1 0 1zm2.89 3L4.5 10h8l1.2-4.8L2.89 4zM5 11a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm10 2a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/>
+                </svg>
+                <span class="font-weight-bold text-light">My Cart</span>
+            </a>
+        </div>
+
+        <!-- My Orders Button -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <a href="{% url 'main:order_details' %}" class="btn btn-lg btn-dark w-100 p-4 d-flex flex-column align-items-center justify-content-center border border-light shadow">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-bag mb-3" viewBox="0 0 16 16">
+                    <path d="M8 1a2 2 0 0 0-2 2v1H3.5A1.5 1.5 0 0 0 2 5.5v9A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 12.5 4H10V3a2 2 0 0 0-2-2zM6 3a1 1 0 0 1 2 0v1H6V3zm6.5 2a.5.5 0 0 1 .5.5V7H3V5.5a.5.5 0 0 1 .5-.5h9zM3 8h10v6.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V8z"/>
+                </svg>
+                <span class="font-weight-bold text-light">My Orders</span>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    .bg-box {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100vh; 
+}
+</style>
+
+{% endblock %}

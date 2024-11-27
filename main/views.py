@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Item, CartItems, Reviews, Contact
+from django.http import HttpResponseBadRequest
+from .models import Item, CartItems, Contact
 from django.contrib import messages
 from django.views.generic import (
     ListView,
@@ -9,33 +10,40 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Sum
+from django.db.models import Q
+from django.core.paginator import Paginator
+import razorpay
+from django.conf import settings
 
 class MenuListView(ListView):
     model = Item
     template_name = 'main/home.html'
     context_object_name = 'menu_items'
 
+    def get_queryset(self):
+        return Item.objects.all()[:3]
+    
+def menu(request):
+    menu = Item.objects.all()
+    
+    query= ''
+    if 'search' in request.POST:
+        query = request.POST.get('searchquery')
+        menu = Item.objects.filter(Q(title__icontains=query) | Q(price__icontains=query))
+
+    paginator = Paginator(menu, 6)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {'menu': menu, 'query':query, 'page_obj': page_obj}
+    return render(request, 'main/menu.html', context)
+
 def menuDetail(request, slug):
     item = Item.objects.filter(slug=slug).first()
-    reviews = Reviews.objects.filter(rslug=slug).order_by('-id')[:7] 
     context = {
         'item' : item,
-        'reviews' : reviews,
     }
     return render(request, 'main/dishes.html', context)
-
-@login_required
-def add_reviews(request):
-    if request.method == "POST":
-        user = request.user
-        rslug = request.POST.get("rslug")
-        item = Item.objects.get(slug=rslug)
-        review = request.POST.get("review")
-
-        reviews = Reviews(user=user, item=item, review=review, rslug=rslug)
-        reviews.save()
-        messages.success(request, "Thank You for Reviewing this Item!!")
-    return redirect(f"/dishes/{item.slug}")
 
 @login_required
 def add_to_cart(request, slug):
@@ -104,6 +112,12 @@ def order_details(request):
 
 def about(request):
     return render(request, 'main/about.html')
+
+def dashboard(request):
+    return render(request, 'main/dashboard.html')
+
+def profile(request):
+    return render(request, 'main/profile.html')
 
 def contact(request):
     ctx = {'active_link': 'contact'}

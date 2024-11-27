@@ -1,61 +1,116 @@
 {% extends "main/layout.html" %}
-{% block content %}
-<div class="cart">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-9 mt-5">
+
+{% load static %}
+
+{% block content1 %}
+<div class="bg-box bg-dark">
+    <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="No Image">
+</div>
+{% endblock %}
+
+{% block content2 %}
+<!-- Order Summary Section (Above Cart Items) -->
+<div class="cart bg-dark py-4">
+    <div class="container">
+        <!-- Order Summary Wide Row -->
+        <div class="row justify-content-center mb-4">
+            <div class="col-12">
+                <div class="content-section">
+                    <h3 class="text-center text-light font-weight-bold mb-4">Order Summary</h3>
+                    <hr class="bg-light">
+                    <div class="row">
+                        <!-- Order Total -->
+                        <div class="col-12 col-md-3 mb-3">
+                            <div class="card bg-dark text-light border border-light">
+                                <div class="card-header text-center font-weight-bold border border-light bg-warning">Order Total</div>
+                                <div class="card-body">
+                                    <p class="text-center font-weight-bold">₹ {{ total }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Number of Orders -->
+                        <div class="col-12 col-md-3 mb-3">
+                            <div class="card bg-dark text-light border border-light">
+                                <div class="card-header text-center font-weight-bold border border-light bg-primary">Number of Orders</div>
+                                <div class="card-body">
+                                    <p class="text-center font-weight-bold">{{ count }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Total Plates -->
+                        <div class="col-12 col-md-3 mb-3">
+                            <div class="card bg-dark text-light border border-light">
+                                <div class="card-header text-center font-weight-bold border border-light bg-success">Total Plates</div>
+                                <div class="card-body">
+                                    <p class="text-center font-weight-bold">{{ total_plates }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="col-12 col-md-3 mb-3">
+                            <div class="card bg-dark text-light border border-light">
+                                <div class="card-header text-center font-weight-bold border border-light bg-danger">Actions</div>
+                                <div class="card-body d-flex flex-column align-items-center">
+                                    <a class="btn btn-dark font-weight-bold mb-2 w-100 border border-light text-center d-flex align-items-center justify-content-center p-2" href="{% url 'main:ordered' %}">
+                                        Proceed To Order
+                                    </a>
+                                    <a class="btn btn-dark font-weight-bold w-100 border border-light text-center d-flex align-items-center justify-content-center p-2" href="{% url 'main:menu' %}">
+                                        Continue Buying
+                                    </a>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart Items Section -->
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-9 mt-4">
                 <h3 class="text-center text-light font-weight-bold">Personal Cart</h3>
-                {% if cart_items %}
-                <div class="table-responsive">
-                    <table class="table table-light bg-dark text-light font-weight-bold">
-                        <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Total Plates</th>
-                            <th scope="col"></th>
-                        </tr>
+                <div class="table-responsive mt-3">
+                    <table class="table table-bordered text-light font-weight-bold">
+                        <thead class="thead" style="background-color: #0d6efd">
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Action</th>
+                            </tr>
                         </thead>
                         <tbody>
                             {% for cart in cart_items %}
-                        <tr>
-                            <td>{{ cart.item.title }}</td>
-                            <td>₹ {{ cart.item.price }}</td>
-                            <td>{{ cart.item.plates }} plates</td>
-                            <td><a class="btn btn-danger font-weight-bold" href="{% url 'main:remove-from-cart' cart.id %}">Delete</a></td>
-                        </tr>
+                            <tr>
+                                <td>{{ cart.item.title }}</td>
+                                <td>₹ {{ cart.item.price }}</td>
+                                <td>
+                                    <a class="btn btn-danger btn-sm font-weight-bold" href="{% url 'main:remove-from-cart' cart.id %}">Delete</a>
+                                </td>
+                            </tr>
                             {% endfor %}
                         </tbody>
                     </table>
-                </div>
-                {% else %}
-                <div class="table-responsive">
-                    <table class="table table-light font-weight-bold bg-dark text-light">
-                        <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Total Plates</th>
-                            <th scope="col"></th>
-                        </tr>
-                        </thead>
-                    </table>
-                </div>
-                {% endif %}
-            </div>
-            <div class="col-sm-3 mt-5 mb-3">
-                <div class="content-section">
-                    <h3 class="text-center text-light font-weight-bold">Order Summary</h3>
-                      <ul class="list-group font-weight-bold">
-                        <li class="list-group-item list-group-item-light text-center text-light bg-dark">Total: ₹ {{ total }}</li>
-                        <li class="list-group-item list-group-item-light text-center text-light bg-dark">Number of Orders: {{ count }}</li>
-                        <li class="list-group-item list-group-item-light text-center text-light bg-dark">Total Plates: {{ total_plates }}</li>
-                        <li class="list-group-item list-group-item-light text-center text-light bg-dark"><a class="btn btn-primary font-weight-bold" href="{% url 'main:ordered' %}">Proceed To Order</a></li>
-                        <li class="list-group-item list-group-item-light text-center bg-dark"><a class="btn btn-success font-weight-bold" href="/">Continue Buying</a></li>
-                      </ul>
                 </div>
             </div>
         </div>
     </div>
 </div>
-{% endblock content %}
+
+<style>
+    a.btn {
+    display: flex;
+    align-items: center;        /* Vertical center */
+    justify-content: center;    /* Horizontal center */
+    text-align: center;         /* Ensure text is centered */
+    box-sizing: border-box;     /* Includes padding and border in width */
+    padding: 8px 16px;          /* Add space inside the anchor tag */
+    max-width: 100%;            /* Prevent the element from growing beyond its container */
+    overflow-wrap: break-word;  /* Break long words to avoid overflow */
+    white-space: normal;        /* Allow text to wrap naturally */
+}
+</style>
+
+{% endblock %}

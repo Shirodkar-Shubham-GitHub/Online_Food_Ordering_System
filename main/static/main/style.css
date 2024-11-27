@@ -2,7 +2,7 @@
 body {
   font-family: "Open Sans", sans-serif;
   color: #0c0c0c;
-  background-color: #ffffff;
+  background-color: #000000;
   overflow-x: hidden;
 }
 
@@ -615,7 +615,7 @@ a:focus {
 }
 
 .about_section {
-  background: #222831;
+  background: #ffffff;
   color: #ffffff;
 }
 
@@ -1005,3 +1005,11 @@ a:focus {
   color: inherit;
 }
 /*# sourceMappingURL=style.css.map */
+
+.background-container {
+  position: fixed;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,19 +1,26 @@
-{% extends "base.html"%}
+{% extends "main/layout.html" %}
 
-    {% block content %}
+{% load static %}
+
+{% block content1 %}
+    <div class="bg-box">
+        <img src="{% static 'main/img/error.jpg' %}" alt="">
+    </div>
+{% endblock %}
+
+{% block content2 %}
 
 
-    <div class="global-container bg-dark text-center">
-        <div class="card login-form bg-dark text-light">
-        <div class="card-body">
-            <h3 class="card-title text-center font-weight-bold">Error</h3>
+    <div class="container bg-transparent text-center" style="width: 50%;">
+        <div class="card login-form bg-transparent border border-dark text-light pb-5">
+        <div class="card-body pb-5">
+            <h3 class="card-title text-center font-weight-bold mt-5">Error</h3>
 
-            <a href="{% url 'login_attempt'%}" class="btn btn-success">Back</a>
+            <a href="{% url 'accounts:login_attempt'%}" class="btn btn-success font-weight-bold">Back</a>
             
             </div>
         </div>
     </div>
     </div>
     
-
-    {% endblock %}
+{% endblock %}

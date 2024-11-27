@@ -1,0 +1,37 @@
+{% extends "main/layout.html" %}
+
+
+{% block content2 %}
+<div class="dashboard-container">
+    <h1>Admin Dashboard</h1>
+    <p>Welcome to the custom admin dashboard!</p>
+    <div class="dashboard-links">
+        <a href="/admin/main/item/">Manage Items</a>
+        <a href="/admin/main/cartitems/">Manage Cart Items</a>
+        <a href="/admin/main/contact/">Manage Contacts</a>
+        <a href="/admin/accounts/profile/">Manage Profiles</a>
+    </div>
+</div>
+
+<style>
+    .dashboard-container {
+        text-align: center;
+        margin: 50px auto;
+        font-family: Arial, sans-serif;
+    }
+    .dashboard-links a {
+        display: block;
+        margin: 10px auto;
+        padding: 10px;
+        width: 200px;
+        text-decoration: none;
+        background-color: #007BFF;
+        color: white;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+    .dashboard-links a:hover {
+        background-color: #0056b3;
+    }
+</style>
+{% endblock %}

@@ -1,33 +1,41 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends "main/layout.html" %}
 
-<div class="global-container bg-dark">
-    <div class="card login-form bg-dark text-light">
-        <div class="card-body">
-            <h3 class="card-title text-center font-weight-bold">Forgot Password</h3>
-            {% if messages %}
+{% load static %}
 
-            {% for message in messages %}
-            <div class="alert-info">
-                {{ message }}
-            </div>
-            {% endfor %}
+{% block content1 %}
+    <div class="bg-box">
+        <img src="{% static 'main/img/forgot-bg.jpg' %}" alt="">
+    </div>
+{% endblock %}
 
-            {% endif %}
-            <div class="card-text">
-                <form method="post">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" name="email" class="form-control form-control-sm" id="exampleInputEmail1"
-                            aria-describedby="emailHelp">
+{% block content2 %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 75vh;">
+    <div class="row w-100">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <div class="card login-form bg-transparent text-light">
+                <div class="card-body">
+                    <h3 class="card-title text-center font-weight-bold">Forgot Password</h3>
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-info text-center">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    <div class="card-text">
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="font-weight-bold">Email address</label>
+                                <input type="email" name="email" class="form-control form-control-sm" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block font-weight-bold">Change Password</button>
+                        </form>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block form-control">Change Password</button>
-                </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-
 {% endblock %}

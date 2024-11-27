@@ -1,8 +1,17 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends "main/layout.html" %}
 
-<div class="global-container bg-dark">
-    <div class="card login-form bg-dark text-light">
+{% load static %}
+
+{% block content1 %}
+    <div class="bg-box">
+        <img src="{% static 'main/img/forgot-bg.jpg' %}" alt="">
+    </div>
+{% endblock %}
+
+{% block content2 %}
+
+<div class="container">
+    <div class="card login-form bg-transparent text-light">
         <div class="card-body">
             <h3 class="card-title text-center font-weight-bold">Change Password</h3>
             {% if messages %}
@@ -18,16 +27,16 @@
                 <form method="post">
                     {% csrf_token %}
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Username</label>
+                        <label for="exampleInputEmail1" class="font-weight-bold">Username</label>
                         <input type="text" name="username" class="form-control form-control-sm" id="exampleInputEmail1"
                             aria-describedby="emailHelp">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">New Password</label>
+                        <label for="exampleInputPassword1" class="font-weight-bold">New Password</label>
                         <input type="password" name="password" class="form-control form-control-sm"
                             id="exampleInputPassword1">
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block form-control">Change Password</button>
+                    <button type="submit" class="btn btn-primary btn-block form-control font-weight-bold">Change Password</button>
                 </form>
             </div>
         </div>

@@ -1,5 +1,14 @@
-{% extends "main/layout3.html" %}
-{% block content %}
+{% extends "main/layout.html" %}
+
+{% load static %}
+
+{% block content1 %}
+    <div class="bg-box">
+        <img src="{% static 'main/img/hero-bg.jpg' %}" alt="">
+    </div>
+{% endblock %}
+
+{% block content2 %}
   <div class="home bg-dark">
     <div id="carouselExampleCaptions" class="container-fluid carousel slide mb-5 py-5" data-ride="carousel" style="height: 500px;">
       <section class="slider_section ">
@@ -17,7 +26,7 @@
                         Chicken dinner is a winner.
                       </p>
                       <div class="btn-box">
-                        <a href="{% url 'main:cart' %}" class="btn1 text-dark">
+                        <a href="{% url 'main:menu' %}" class="btn1 font-weight-bold text-light">
                           Order Now!
                         </a>
                       </div>
@@ -38,7 +47,7 @@
                         Grab life by the fork.
                       </p>
                       <div class="btn-box">
-                        <a href="{% url 'main:cart' %}" class="btn1 text-dark">
+                        <a href="{% url 'main:menu' %}" class="btn1 font-weight-bold text-light">
                           Order Now!
                         </a>
                       </div>
@@ -59,7 +68,7 @@
                         Good food. Good mood.
                       </p>
                       <div class="btn-box">
-                        <a href="{% url 'main:cart' %}" class="btn1 text-dark">
+                        <a href="{% url 'main:menu' %}" class="btn1 font-weight-bold text-light">
                           Order Now!
                         </a>
                       </div>
@@ -82,7 +91,7 @@
     </div>
     <section class="food_section layout_padding-bottom pt-5">
       <div class="container">
-        <div class="heading_container heading_center text-white">
+        <div class="heading_container heading_center text-white mt-5 pt-5">
           <h2>
             Menu Card
           </h2>
@@ -164,6 +173,11 @@
             </div>
             {% endfor %}
       </div>
+      <div class="btn-box font-weight-bold px-3">
+        <a href="{% url 'main:menu' %}">
+          View More
+        </a>
+      </div>
     </section>
     <!-- footer section -->
 <footer class="footer_section">
@@ -236,4 +250,4 @@
       </div>
     </div>
   </div>
-{% endblock content %}
+{% endblock %}

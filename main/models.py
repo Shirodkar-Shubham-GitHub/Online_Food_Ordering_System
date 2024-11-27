@@ -1,6 +1,4 @@
 from django.db import models
-from django.conf import settings
-from django.shortcuts import reverse
 from django.utils import timezone
 from django.contrib.auth.models import User
 
@@ -15,20 +13,6 @@ class Item(models.Model):
 
     def __str__(self):
         return self.title
-
-class Reviews(models.Model):
-    user = models.ForeignKey(User, on_delete = models.CASCADE)
-    item = models.ForeignKey(Item, on_delete = models.CASCADE)
-    rslug = models.SlugField()
-    review = models.TextField()
-    posted_on = models.DateField(default=timezone.now)
-
-    class Meta:
-        verbose_name = 'Review'
-        verbose_name_plural = 'Reviews'
-
-    def __str__(self):
-        return self.review
 
 class CartItems(models.Model):
     ORDER_STATUS = (

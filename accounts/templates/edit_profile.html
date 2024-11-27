@@ -1,0 +1,44 @@
+{% extends "main/layout.html" %}
+
+{% block content1 %}
+<div class="bg-box bg-dark">
+    <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="No Image">
+</div>
+{% endblock %}
+
+{% block content2 %}
+<div class="container">
+    <h2 class="text-center text-light font-weight-bold">Edit Profile</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-8 bg-dark p-4 rounded shadow border border-light">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="first_name" class="form-label font-weight-bold text-light">First Name</label>
+                    <input type="text" class="form-control" id="first_name" name="first_name" 
+                           value="{{ request.user.first_name }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="last_name" class="form-label font-weight-bold text-light">Last Name</label>
+                    <input type="text" class="form-control" id="last_name" name="last_name" 
+                           value="{{ request.user.last_name }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="username" class="form-label font-weight-bold text-light">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" 
+                           value="{{ request.user.username }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label font-weight-bold text-light">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" 
+                           value="{{ request.user.email }}" required>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary font-weight-bold">Save Changes</button>
+                    <a href="{% url 'accounts:profile' %}" class="btn btn-secondary font-weight-bold">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
