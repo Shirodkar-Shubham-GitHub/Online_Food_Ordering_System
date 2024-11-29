@@ -27,13 +27,13 @@
 * Home Page Update: Limited the menu list on the home page to a maximum of three items.
 * Menu Module: Created a separate Menu module with the following features:
   * Search Bar: Allows users to search for menu items.
-** Pagination: Displays a maximum of six items per page.
+  * Pagination: Displays a maximum of six items per page.
 * Dashboard Enhancements: Introduced a dashboard that includes:
-** User Profile: View and edit your profile.
-** My Cart: Access your cart.
-** My Orders: Track your orders.
-** Change Password: Update your account password.
-** CSS Animations: Added smooth animations for better user experience.
+  * User Profile: View and edit your profile.
+  * My Cart: Access your cart.
+  * My Orders: Track your orders.
+  * Change Password: Update your account password.
+  * CSS Animations: Added smooth animations for better user experience.
 * Database Migration: Migrated the database from SQLite3 to MySQL for improved performance and scalability.
 * Deployment: Deployed the project using MySQL on PythonAnywhere for reliable hosting.
 
