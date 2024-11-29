@@ -1,7 +1,7 @@
 # Lett' uce Eat - Online Food Ordering System
 
 ## Overview
-   Welcome to Lett' uce Eat, an online food ordering system where users can browse delicious food items, add them to their cart, and place orders with ease. This project includes features for both users and administrators, with a focus on secure authentication and smooth order management. The live version of the application is available [here](https://shubham990shirodkar.pythonanywhere.com/).
+   Welcome to Lett' uce Eat, an online food ordering system where users can browse delicious food items, add them to their cart, and place orders with ease. This project includes features for both users and administrators, with a focus on secure authentication and smooth order management. The live version of the application is available [here](https://shubham373shirodkar.pythonanywhere.com/).
     
 ## Features
 ### User Features
