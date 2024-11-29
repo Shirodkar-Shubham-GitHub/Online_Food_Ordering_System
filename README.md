@@ -26,7 +26,7 @@
 * Session Management: Implemented session management for users and admins for better security and control.
 * Home Page Update: Limited the menu list on the home page to a maximum of three items.
 * Menu Module: Created a separate Menu module with the following features:
-** Search Bar: Allows users to search for menu items.
+  * Search Bar: Allows users to search for menu items.
 ** Pagination: Displays a maximum of six items per page.
 * Dashboard Enhancements: Introduced a dashboard that includes:
 ** User Profile: View and edit your profile.
