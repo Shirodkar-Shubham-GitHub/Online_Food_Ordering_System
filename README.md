@@ -6,21 +6,41 @@
 ## Features
 ### User Features
 * Email Verification: Secure your account with email verification during registration.
+* Google Login: Login easily using your Google account.
 * Order Food: Browse and order from a variety of food items.
 * Add to Cart: Add items to your cart before placing an order.
 * Review Items: Leave feedback on food items you've ordered.
 * Contact for Cancellation: Reach out to cancel your order if needed.
+* Dashboard: View and edit your profile, check your cart and orders, and change your password.
 
 ### Admin Features
+* Session Management: Manage active sessions for admins and users.
 * Manage User Profiles: View and manage user accounts.
 * Manage Orders: Oversee and manage all customer orders.
 * Manage Contacts: Handle customer inquiries and order cancellations.
 * Add Food Items: Add new food items to the menu.
 
+## Updates
+
+* Google Login: Added Google login integration for easier user access.
+* Session Management: Implemented session management for users and admins for better security and control.
+* Home Page Update: Limited the menu list on the home page to a maximum of three items.
+* Menu Module: Created a separate Menu module with the following features:
+** Search Bar: Allows users to search for menu items.
+** Pagination: Displays a maximum of six items per page.
+* Dashboard Enhancements: Introduced a dashboard that includes:
+** User Profile: View and edit your profile.
+** My Cart: Access your cart.
+** My Orders: Track your orders.
+** Change Password: Update your account password.
+** CSS Animations: Added smooth animations for better user experience.
+* Database Migration: Migrated the database from SQLite3 to MySQL for improved performance and scalability.
+* Deployment: Deployed the project using MySQL on PythonAnywhere for reliable hosting.
+
 ## Technologies Used
 * Python
 * Django
-* SQLite3
+* MySQL
 * Bootstrap5
 
 ## Installation
@@ -50,6 +70,8 @@ Online_Food_Ordering_System/
 ├── Foods_Ordering/              # Main Django project folder
 │   ├── __init__.py
 │   ├── asgi.py
+|   ├── middleware.py
+|   ├── session_middleware.py
 │   ├── settings.py           # Project settings (e.g., database, middleware)
 │   ├── urls.py               # Main URL routing for the project
 │   ├── wsgi.py
@@ -82,8 +104,6 @@ Online_Food_Ordering_System/
 │
 ├── my_env/                  # A directory with particular  file structure.
 │
-├── config_file.py           # A file that contains private links and credentials.
-│
 ├── manage.py                 # Django command-line utility
 │
 ├── requirements.txt          # Python dependencies for the project
@@ -92,16 +112,18 @@ Online_Food_Ordering_System/
 ```
 
 ## Deployment
-   This project is ready to be deployed on PythonAnywhere or any other hosting platform. Follow the platform's instructions to deploy your Django application.
+   This project was deployed on PythonAnywhere using MySQL as the database. Follow the platform's instructions to deploy your Django application.
    
 ## Usage
 #### 1. Registration and Login:
-   * Register a new account with email verification.
-   * Login to your account using your email and password.
+   * Register a new account with email verification or use Google login.
+   * Login to your account using your credentials.
 #### 2. Browsing and Ordering:
-   * Browse the menu and add your favorite items to the cart.
-   * Place an order and receive an email confirmation.
-#### 3. Admin Access:
+   * Browse the menu (limited to three items on the home page) or use the Menu module with search and pagination to explore more items.
+   * Add your favorite items to the cart and place an order.
+#### 3. Dashboard:
+   * Manage your profile, cart, orders, and password from the dashboard.
+#### 4. Admin Access:
    * Login to the admin panel to manage users, orders, and food items.
 
 ## Testing
@@ -111,20 +133,4 @@ Online_Food_Ordering_System/
 
 ### 1. **Payment Gateway Integration for Order Payments**
 
-We plan to implement a secure and reliable payment gateway to enable users to complete their orders directly on the platform. This enhancement will streamline the checkout process and improve user experience.
-
-#### Planned Features:
-- **Multiple Payment Methods**: Integration of popular payment options such as credit/debit cards, UPI, net banking, and mobile wallets.
-- **Payment Gateways**: Implementation of widely used payment gateways like PayPal, Razorpay, or Paytm.
-- **Secure Transactions**: Ensure that all transactions are encrypted and meet the required security standards, such as PCI-DSS compliance.
-- **Order Confirmation and Receipts**: Automatically generate order receipts and send email confirmations after successful payments.
-- **Test Environment**: A sandbox environment for testing the payment process before deployment to production.
-
-#### Future Development Phases:
-1. **Research and Select Payment Gateway**: Evaluate and choose the payment gateway based on transaction fees, country-specific availability, and ease of integration.
-2. **Backend Integration**: Use the payment gateway's API to securely process payments in the backend.
-3. **Frontend Checkout Page**: Design a user-friendly checkout page that allows users to select their preferred payment method.
-4. **Testing and Debugging**: Test the entire payment process in a sandbox environment before going live.
-5. **Deployment**: Once the payment gateway integration is completed and tested, it will be deployed to the production environment.
-
-Expect to implement the payment gateway within the next few releases.
+We plan to implement a secure payment gateway to enhance the checkout experience.
